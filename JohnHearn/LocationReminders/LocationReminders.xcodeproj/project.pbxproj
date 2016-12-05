@@ -13,7 +13,36 @@
 		F28B256F1DF5E8A200DEFF75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28B256D1DF5E8A200DEFF75 /* Main.storyboard */; };
 		F28B25711DF5E8A200DEFF75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28B25701DF5E8A200DEFF75 /* Assets.xcassets */; };
 		F28B25741DF5E8A200DEFF75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28B25721DF5E8A200DEFF75 /* LaunchScreen.storyboard */; };
+		F28B257E1DF5EC8800DEFF75 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B257C1DF5EC8800DEFF75 /* Bolts.framework */; };
+		F28B257F1DF5EC8800DEFF75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B257D1DF5EC8800DEFF75 /* Parse.framework */; };
+		F28B25821DF5ED8900DEFF75 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257D1DF5EC8800DEFF75 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F28B25831DF5ED8D00DEFF75 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257C1DF5EC8800DEFF75 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		F28B25801DF5ED6100DEFF75 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F28B25811DF5ED7400DEFF75 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F28B25831DF5ED8D00DEFF75 /* Bolts.framework in CopyFiles */,
+				F28B25821DF5ED8900DEFF75 /* Parse.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F28B25611DF5E8A200DEFF75 /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +55,8 @@
 		F28B25701DF5E8A200DEFF75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F28B25731DF5E8A200DEFF75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F28B25751DF5E8A300DEFF75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F28B257C1DF5EC8800DEFF75 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		F28B257D1DF5EC8800DEFF75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28B257E1DF5EC8800DEFF75 /* Bolts.framework in Frameworks */,
+				F28B257F1DF5EC8800DEFF75 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +77,7 @@
 			children = (
 				F28B25631DF5E8A200DEFF75 /* LocationReminders */,
 				F28B25621DF5E8A200DEFF75 /* Products */,
+				F28B257B1DF5EC8800DEFF75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +113,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F28B257B1DF5EC8800DEFF75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F28B257C1DF5EC8800DEFF75 /* Bolts.framework */,
+				F28B257D1DF5EC8800DEFF75 /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,8 +132,10 @@
 				F28B255D1DF5E8A200DEFF75 /* Sources */,
 				F28B255E1DF5E8A200DEFF75 /* Frameworks */,
 				F28B255F1DF5E8A200DEFF75 /* Resources */,
+				F28B25811DF5ED7400DEFF75 /* CopyFiles */,
 			);
 			buildRules = (
+				F28B25801DF5ED6100DEFF75 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -274,6 +319,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KUNVAN4RR6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bastardized.jhearn.LocationReminders;
@@ -286,6 +335,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KUNVAN4RR6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bastardized.jhearn.LocationReminders;
