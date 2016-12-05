@@ -57,6 +57,7 @@
 		F28B25751DF5E8A300DEFF75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F28B257C1DF5EC8800DEFF75 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		F28B257D1DF5EC8800DEFF75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		F28B25841DF5EEED00DEFF75 /* Credentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 				F28B25721DF5E8A200DEFF75 /* LaunchScreen.storyboard */,
 				F28B25751DF5E8A300DEFF75 /* Info.plist */,
 				F28B25641DF5E8A200DEFF75 /* Supporting Files */,
+				F28B25841DF5EEED00DEFF75 /* Credentials.h */,
 			);
 			path = LocationReminders;
 			sourceTree = "<group>";
