@@ -17,6 +17,7 @@
 		F28B257F1DF5EC8800DEFF75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B257D1DF5EC8800DEFF75 /* Parse.framework */; };
 		F28B25821DF5ED8900DEFF75 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257D1DF5EC8800DEFF75 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F28B25831DF5ED8D00DEFF75 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257C1DF5EC8800DEFF75 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F28B25861DF603CA00DEFF75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B25851DF603CA00DEFF75 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -58,6 +59,7 @@
 		F28B257C1DF5EC8800DEFF75 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		F28B257D1DF5EC8800DEFF75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		F28B25841DF5EEED00DEFF75 /* Credentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
+		F28B25851DF603CA00DEFF75 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F28B257E1DF5EC8800DEFF75 /* Bolts.framework in Frameworks */,
+				F28B25861DF603CA00DEFF75 /* MapKit.framework in Frameworks */,
 				F28B257F1DF5EC8800DEFF75 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +121,7 @@
 		F28B257B1DF5EC8800DEFF75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F28B25851DF603CA00DEFF75 /* MapKit.framework */,
 				F28B257C1DF5EC8800DEFF75 /* Bolts.framework */,
 				F28B257D1DF5EC8800DEFF75 /* Parse.framework */,
 			);
@@ -159,6 +163,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = KUNVAN4RR6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
