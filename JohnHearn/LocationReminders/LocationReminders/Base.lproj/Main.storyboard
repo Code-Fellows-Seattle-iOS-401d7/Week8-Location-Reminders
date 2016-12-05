@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,26 +21,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zfv-iR-CPK">
-                                <rect key="frame" x="37" y="83" width="300" height="500"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5J-mv-UKA">
-                                <rect key="frame" x="37" y="45" width="300" height="30"/>
-                                <state key="normal" title="Set Location"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-tm-W25">
+                                <rect key="frame" x="20" y="533" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tZg-lw-VWD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <state key="normal" title="Slate Coffee Roasters">
+                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="setLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kae-DR-jbS"/>
+                                    <action selector="slateCoffeeRoastersPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cKz-2T-klN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="323-op-FDf">
+                                <rect key="frame" x="20" y="575" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uuD-Lp-qj7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <state key="normal" title="La Marzocco Cafe">
+                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="laMarzoccoCafePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6zM-BZ-fg9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8f-Me-anH">
+                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fht-Su-m1v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <state key="normal" title="Union Coffee">
+                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="unionCoffeePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dCm-vc-6ZO"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zfv-iR-CPK">
+                                <rect key="frame" x="20" y="40" width="335" height="481"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="5Jm-Tg-KdG"/>
-                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="Pop-yn-YJo"/>
-                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="THB-ai-YGi"/>
-                            <constraint firstItem="i5J-mv-UKA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UX2-qs-hrm"/>
-                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WEE-xq-bHZ"/>
-                            <constraint firstItem="i5J-mv-UKA" firstAttribute="width" secondItem="Zfv-iR-CPK" secondAttribute="width" id="Wtv-ob-VYv"/>
-                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="top" secondItem="i5J-mv-UKA" secondAttribute="bottom" constant="8" id="pHU-WS-95Z"/>
+                            <constraint firstItem="323-op-FDf" firstAttribute="width" secondItem="Zfv-iR-CPK" secondAttribute="width" id="6Rf-HL-1ab"/>
+                            <constraint firstItem="S8f-Me-anH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hsn-9s-ffk"/>
+                            <constraint firstItem="323-op-FDf" firstAttribute="top" secondItem="yYM-tm-W25" secondAttribute="bottom" constant="12" id="Nun-y1-HGm"/>
+                            <constraint firstItem="yYM-tm-W25" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TAI-xb-Sgl"/>
+                            <constraint firstItem="S8f-Me-anH" firstAttribute="width" secondItem="Zfv-iR-CPK" secondAttribute="width" id="VNL-bQ-6go"/>
+                            <constraint firstItem="S8f-Me-anH" firstAttribute="top" secondItem="323-op-FDf" secondAttribute="bottom" constant="12" id="Xxp-xo-dvY"/>
+                            <constraint firstItem="yYM-tm-W25" firstAttribute="top" secondItem="Zfv-iR-CPK" secondAttribute="bottom" constant="12" id="bEd-M7-VGZ"/>
+                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="d3j-Oq-fiT"/>
+                            <constraint firstItem="323-op-FDf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hcR-w6-356"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="S8f-Me-anH" secondAttribute="bottom" constant="20" id="i3d-kr-cwe"/>
+                            <constraint firstItem="yYM-tm-W25" firstAttribute="width" secondItem="Zfv-iR-CPK" secondAttribute="width" id="iyb-a6-Zhs"/>
+                            <constraint firstItem="Zfv-iR-CPK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="jXM-Ey-ptV"/>
+                            <constraint firstAttribute="trailing" secondItem="Zfv-iR-CPK" secondAttribute="trailing" constant="20" id="nhJ-1n-NxO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -50,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="98"/>
+            <point key="canvasLocation" x="-1014" y="105"/>
         </scene>
     </scenes>
 </document>

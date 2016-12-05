@@ -59,14 +59,24 @@
 
 }
 
-
-- (IBAction)setLocationPressed:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566, -122.351096);
+-(void)setLocationTo:(CLLocationCoordinate2D)coordinate{
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
-
     [self.mapView setRegion:region animated:YES];
-
 }
 
+
+- (IBAction)slateCoffeeRoastersPressed:(id)sender {
+    CLLocationCoordinate2D slateCoffee = CLLocationCoordinate2DMake(47.66114, -122.31388);
+    [self setLocationTo:slateCoffee];
+
+}
+- (IBAction)laMarzoccoCafePressed:(id)sender {
+    CLLocationCoordinate2D laMarzocco = CLLocationCoordinate2DMake(47.6228, -122.3551);
+    [self setLocationTo:laMarzocco];
+}
+- (IBAction)unionCoffeePressed:(id)sender {
+    CLLocationCoordinate2D unionCoffee = CLLocationCoordinate2DMake(47.61281, -122.30105);
+    [self setLocationTo:unionCoffee];
+}
 
 @end
