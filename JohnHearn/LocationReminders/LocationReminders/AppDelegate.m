@@ -22,8 +22,8 @@
 
     [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration>  _Nonnull configuration) {
 
-        configuration.applicationId = kClientId;
-        configuration.clientKey = kApplicationId;
+        configuration.applicationId = kApplicationId;
+        configuration.clientKey = kClientKey;
         configuration.server = kServer;
     }]];
 

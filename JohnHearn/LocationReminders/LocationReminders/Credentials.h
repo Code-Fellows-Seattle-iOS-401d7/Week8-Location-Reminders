@@ -9,7 +9,7 @@
 #ifndef Credentials_h
 #define Credentials_h
 
-NSString *kClientId = @"";
+NSString *kClientKey = @"";
 NSString *kApplicationId = @"";
 NSString *kServer = @"";
 
