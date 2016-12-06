@@ -1,28 +1,29 @@
 import Foundation
 
 func getNext(_ prime: Int) -> Int {
-    // Return a prime roughly twice the size of the current table size.
+    // Returns a prime roughly twice the size of the current table size.
+    // (Outside class so we can use it in the initializer.)
     switch prime {
-    case 53:       return 107
-    case 107:      return 223
-    case 223:      return 443
-    case 443:      return 883
-    case 883:      return 1759
-    case 1759:     return 3511
-    case 3511:     return 7013
-    case 7013:     return 14009
-    case 14009:    return 28001
-    case 28001:    return 56003
-    case 56003:    return 111997
-    case 111997:   return 224011
-    case 224011:   return 448003
-    case 448003:   return 896003
-    case 896003:   return 1889999
-    case 1889999:  return 3780017
-    case 3780017:  return 7560013
-    case 7560013:  return 15120011
-    case 15120011: return 30240013
-    default: return 0;
+        case 53:       return 107
+        case 107:      return 223
+        case 223:      return 443
+        case 443:      return 883
+        case 883:      return 1759
+        case 1759:     return 3511
+        case 3511:     return 7013
+        case 7013:     return 14009
+        case 14009:    return 28001
+        case 28001:    return 56003
+        case 56003:    return 111997
+        case 111997:   return 224011
+        case 224011:   return 448003
+        case 448003:   return 896003
+        case 896003:   return 1889999
+        case 1889999:  return 3780017
+        case 3780017:  return 7560013
+        case 7560013:  return 15120011
+        case 15120011: return 30240013
+        default: return 0;
     }
 }
 
@@ -159,8 +160,12 @@ for ii in 0...250 {
     myHashTable!.insert(el)
 }
 
+myHashTable!.numberOfExpansions
+myHashTable!.elementCount
 myHashTable!.loadFactor
 myHashTable!.collisions
+myHashTable!.maxChain
+
 
 
 
