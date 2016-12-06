@@ -56,6 +56,7 @@
     [self requestPermissions];
     [self.mapView setShowsUserLocation:YES];
 
+    [self testQueue];
     [self testStack];
 
 }
@@ -71,8 +72,9 @@
     NSLog(@"**Dequed Number=  %@",dequedNum);
     NSLog(@"**Last number after dequeue = %@",myQ.peek);
     [myQ enqueue:@"4"];
-    NSLog(@"**Last number after dequeue = %@",myQ.peek); //Should be 4
+    NSLog(@"**Last number after dequeue = %@",myQ.peek); 
 
+    //See location_remindersTests for more tests
 }
 
 -(void)testStack {
@@ -86,8 +88,10 @@
     NSLog(@"**Popped Number=  %@",poppedNum);
     NSLog(@"**Last number after pop = %@",myS.peek);
     [myS push:@"4"];
-    NSLog(@"**Last number after pop = %@",myS.peek); //Should be 4
-    
+    NSLog(@"**Last number after pop = %@",myS.peek); //
+
+    //See location_remindersTests for more tests
+
 }
 
 -(void)requestPermissions {

@@ -23,7 +23,18 @@
 		BD4AE2141DF603A000C410EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4AE2131DF603A000C410EA /* MapKit.framework */; };
 		BD4AE2181DF61D4E00C410EA /* MyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE2171DF61D4E00C410EA /* MyQueue.m */; };
 		BD4AE21B1DF638F200C410EA /* MyStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE21A1DF638F200C410EA /* MyStack.m */; };
+		BD4AE2251DF66CB500C410EA /* location_remindersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE2241DF66CB500C410EA /* location_remindersTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD4AE2271DF66CB500C410EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD4AE1DA1DF5E8A700C410EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD4AE1E11DF5E8A700C410EA;
+			remoteInfo = "location-reminders";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BD4AE20A1DF5F69900C410EA /* Embed Frameworks */ = {
@@ -71,6 +82,9 @@
 		BD4AE2171DF61D4E00C410EA /* MyQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQueue.m; sourceTree = "<group>"; };
 		BD4AE2191DF638F200C410EA /* MyStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStack.h; sourceTree = "<group>"; };
 		BD4AE21A1DF638F200C410EA /* MyStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStack.m; sourceTree = "<group>"; };
+		BD4AE2221DF66CB500C410EA /* location-remindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "location-remindersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD4AE2241DF66CB500C410EA /* location_remindersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = location_remindersTests.m; sourceTree = "<group>"; };
+		BD4AE2261DF66CB500C410EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +98,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BD4AE21F1DF66CB500C410EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +113,7 @@
 			children = (
 				BD4AE2151DF61D0A00C410EA /* DataStructures */,
 				BD4AE1E41DF5E8A700C410EA /* location-reminders */,
+				BD4AE2231DF66CB500C410EA /* location-remindersTests */,
 				BD4AE1E31DF5E8A700C410EA /* Products */,
 				BD4AE1FC1DF5EC9700C410EA /* Frameworks */,
 			);
@@ -101,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				BD4AE1E21DF5E8A700C410EA /* location-reminders.app */,
+				BD4AE2221DF66CB500C410EA /* location-remindersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +175,15 @@
 			name = DataStructures;
 			sourceTree = "<group>";
 		};
+		BD4AE2231DF66CB500C410EA /* location-remindersTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD4AE2241DF66CB500C410EA /* location_remindersTests.m */,
+				BD4AE2261DF66CB500C410EA /* Info.plist */,
+			);
+			path = "location-remindersTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,6 +206,24 @@
 			productReference = BD4AE1E21DF5E8A700C410EA /* location-reminders.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BD4AE2211DF66CB500C410EA /* location-remindersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD4AE2291DF66CB500C410EA /* Build configuration list for PBXNativeTarget "location-remindersTests" */;
+			buildPhases = (
+				BD4AE21E1DF66CB500C410EA /* Sources */,
+				BD4AE21F1DF66CB500C410EA /* Frameworks */,
+				BD4AE2201DF66CB500C410EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD4AE2281DF66CB500C410EA /* PBXTargetDependency */,
+			);
+			name = "location-remindersTests";
+			productName = "location-remindersTests";
+			productReference = BD4AE2221DF66CB500C410EA /* location-remindersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,6 +243,12 @@
 							};
 						};
 					};
+					BD4AE2211DF66CB500C410EA = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = AWF997WQMM;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BD4AE1E11DF5E8A700C410EA;
+					};
 				};
 			};
 			buildConfigurationList = BD4AE1DD1DF5E8A700C410EA /* Build configuration list for PBXProject "location-reminders" */;
@@ -209,6 +265,7 @@
 			projectRoot = "";
 			targets = (
 				BD4AE1E11DF5E8A700C410EA /* location-reminders */,
+				BD4AE2211DF66CB500C410EA /* location-remindersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +278,13 @@
 				BD4AE1F51DF5E8A700C410EA /* LaunchScreen.storyboard in Resources */,
 				BD4AE1F21DF5E8A700C410EA /* Assets.xcassets in Resources */,
 				BD4AE1F01DF5E8A700C410EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD4AE2201DF66CB500C410EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +304,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BD4AE21E1DF66CB500C410EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD4AE2251DF66CB500C410EA /* location_remindersTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD4AE2281DF66CB500C410EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD4AE1E11DF5E8A700C410EA /* location-reminders */;
+			targetProxy = BD4AE2271DF66CB500C410EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BD4AE1EE1DF5E8A700C410EA /* Main.storyboard */ = {
@@ -382,6 +462,32 @@
 			};
 			name = Release;
 		};
+		BD4AE22A1DF66CB500C410EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AWF997WQMM;
+				INFOPLIST_FILE = "location-remindersTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "filizk.location-remindersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/location-reminders.app/location-reminders";
+			};
+			name = Debug;
+		};
+		BD4AE22B1DF66CB500C410EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AWF997WQMM;
+				INFOPLIST_FILE = "location-remindersTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "filizk.location-remindersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/location-reminders.app/location-reminders";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,6 +505,15 @@
 			buildConfigurations = (
 				BD4AE1FA1DF5E8A700C410EA /* Debug */,
 				BD4AE1FB1DF5E8A700C410EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD4AE2291DF66CB500C410EA /* Build configuration list for PBXNativeTarget "location-remindersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD4AE22A1DF66CB500C410EA /* Debug */,
+				BD4AE22B1DF66CB500C410EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
