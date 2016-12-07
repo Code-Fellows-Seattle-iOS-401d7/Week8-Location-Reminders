@@ -7,12 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "DetailViewController.h"
+#import "LocationController.h"
+//@import UIKit;
 @import MapKit;
 @import Parse;
 
-@interface ViewController ()
+
+@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSMutableDictionary *coffeeShops;
+
 
 @end
 
@@ -20,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 
     /* Useful sample code */
 //    PFObject * testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -49,7 +54,62 @@
 
 
     [self requestPermissions];
+    self.mapView.delegate = self;
+    [LocationController sharedController].delegate =self;
     [self.mapView setShowsUserLocation:YES];
+
+    self.coffeeShops = [[NSMutableDictionary alloc] init];
+    [self loadCoffeeShopAnnotations];
+
+
+}
+
+-(void)loadCoffeeShopAnnotations{
+    [self.coffeeShops setValue:[self annotate:@"Slate Coffee Roasters"
+                                           at:CLLocationCoordinate2DMake(47.66114, -122.31388)]
+                        forKey:@"slateCoffee"];
+
+    [self.coffeeShops setValue:[self annotate:@"La Marzocco Cafe"
+                                           at:CLLocationCoordinate2DMake(47.6228, -122.3551)]
+                        forKey:@"laMarzocco"];
+
+    [self.coffeeShops setValue:[self annotate:@"Union Coffee"
+                                           at:CLLocationCoordinate2DMake(47.61281, -122.30105)]
+                        forKey:@"unionCoffee"];
+
+    [self.coffeeShops setValue:[self annotate:@"Victrola Coffee"
+                                           at:CLLocationCoordinate2DMake(47.6224, -122.3128)]
+                        forKey:@"victrola"];
+    [self.coffeeShops setValue:[self annotate:@"Stumptown Coffee Roasters"
+                                           at:CLLocationCoordinate2DMake(47.61205, -122.3170)]
+                        forKey:@"stumptown"];
+
+}
+
+-(MKPointAnnotation *)annotate:(NSString *)title at:(CLLocationCoordinate2D)coordinate{
+    MKPointAnnotation *newMapPoint = [[MKPointAnnotation alloc] init];
+    newMapPoint.title = title;
+    newMapPoint.coordinate = coordinate;
+
+    [self.mapView addAnnotation:newMapPoint];
+    return newMapPoint;
+}
+
+-(UIColor *)randomColor{
+
+
+    CGFloat hue = ( arc4random_uniform(256) / 256.0  );  //  0.0 to 1.0
+    CGFloat saturation = ( arc4random_uniform(128) / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+    CGFloat brightness = ( arc4random_uniform(128) / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+
+    return color;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
+    [[[LocationController sharedController] manager] startUpdatingLocation];
 }
 
 -(void)requestPermissions{
@@ -66,17 +126,81 @@
 
 
 - (IBAction)slateCoffeeRoastersPressed:(id)sender {
-    CLLocationCoordinate2D slateCoffee = CLLocationCoordinate2DMake(47.66114, -122.31388);
-    [self setLocationTo:slateCoffee];
-
+    [self setLocationTo:[[self.coffeeShops objectForKey:@"slateCoffee"] coordinate]];
 }
 - (IBAction)laMarzoccoCafePressed:(id)sender {
-    CLLocationCoordinate2D laMarzocco = CLLocationCoordinate2DMake(47.6228, -122.3551);
-    [self setLocationTo:laMarzocco];
+    [self setLocationTo:[[self.coffeeShops objectForKey:@"laMarzocco"] coordinate]];
 }
 - (IBAction)unionCoffeePressed:(id)sender {
-    CLLocationCoordinate2D unionCoffee = CLLocationCoordinate2DMake(47.61281, -122.30105);
-    [self setLocationTo:unionCoffee];
+    [self setLocationTo:[[self.coffeeShops objectForKey:@"unionCoffee"] coordinate]];
+}
+
+- (IBAction)mapLongPressed:(UILongPressGestureRecognizer *)sender {
+    if(sender.state == UIGestureRecognizerStateBegan) {
+        CGPoint touchPoint = [sender locationInView:self.mapView];
+        CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint
+                                                          toCoordinateFromView:self.mapView];
+        [self.mapView addAnnotation:[self annotate:@"New Location" at:touchMapCoordinate]];
+    }
+}
+
+
+//MARK: LocationControllerDelegate Methods
+-(void)locationControllerUpdatedLocation:(CLLocation *)location{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
+    [self.mapView setRegion:region];
+
+}
+
+
+//MARK: MKMapViewDelegate Methods
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
+    annotationView.annotation = annotation;
+
+    if(!annotationView){
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"AnnotationView"];
+    }
+
+    annotationView.canShowCallout = YES;
+    annotationView.animatesDrop = YES;
+
+    UIButton *rightCalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    annotationView.rightCalloutAccessoryView = rightCalloutButton;
+
+    annotationView.pinTintColor = [self randomColor];
+
+    //TODO: call method for random color for pin color (you want pin tint color)
+    
+    return annotationView;
+
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    [self performSegueWithIdentifier:@"DetailViewController" sender:view];
+    //pass sender to prepareforsegue so we can do stuff
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"DetailViewController"]){
+        if([sender isKindOfClass:[MKAnnotationView class]]) {
+            MKAnnotationView *annotationView = (MKAnnotationView *)sender;
+
+            DetailViewController *detailViewController = (DetailViewController *)segue.destinationViewController;
+            detailViewController.annotationTitle = annotationView.annotation.title;
+            detailViewController.coordinate = annotationView.annotation.coordinate;
+        }
+    }
 }
 
 @end
+
+
+
+

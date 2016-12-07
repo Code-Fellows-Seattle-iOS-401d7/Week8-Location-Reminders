@@ -18,6 +18,8 @@
 		F28B25821DF5ED8900DEFF75 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257D1DF5EC8800DEFF75 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F28B25831DF5ED8D00DEFF75 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28B257C1DF5EC8800DEFF75 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F28B25861DF603CA00DEFF75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B25851DF603CA00DEFF75 /* MapKit.framework */; };
+		F28B25A01DF740F000DEFF75 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28B259F1DF740F000DEFF75 /* LocationController.m */; };
+		F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28B25A21DF74FC700DEFF75 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -60,6 +62,10 @@
 		F28B257D1DF5EC8800DEFF75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		F28B25841DF5EEED00DEFF75 /* Credentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
 		F28B25851DF603CA00DEFF75 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F28B259E1DF740F000DEFF75 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		F28B259F1DF740F000DEFF75 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		F28B25A11DF74FC700DEFF75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		F28B25A21DF74FC700DEFF75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +107,15 @@
 				F28B256A1DF5E8A200DEFF75 /* ViewController.h */,
 				F28B256B1DF5E8A200DEFF75 /* ViewController.m */,
 				F28B256D1DF5E8A200DEFF75 /* Main.storyboard */,
+				F28B259E1DF740F000DEFF75 /* LocationController.h */,
+				F28B259F1DF740F000DEFF75 /* LocationController.m */,
 				F28B25701DF5E8A200DEFF75 /* Assets.xcassets */,
 				F28B25721DF5E8A200DEFF75 /* LaunchScreen.storyboard */,
 				F28B25751DF5E8A300DEFF75 /* Info.plist */,
 				F28B25641DF5E8A200DEFF75 /* Supporting Files */,
 				F28B25841DF5EEED00DEFF75 /* Credentials.h */,
+				F28B25A11DF74FC700DEFF75 /* DetailViewController.h */,
+				F28B25A21DF74FC700DEFF75 /* DetailViewController.m */,
 			);
 			path = LocationReminders;
 			sourceTree = "<group>";
@@ -207,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */,
+				F28B25A01DF740F000DEFF75 /* LocationController.m in Sources */,
 				F28B256C1DF5E8A200DEFF75 /* ViewController.m in Sources */,
 				F28B25691DF5E8A200DEFF75 /* AppDelegate.m in Sources */,
 				F28B25661DF5E8A200DEFF75 /* main.m in Sources */,
@@ -376,6 +388,7 @@
 				F28B257A1DF5E8A300DEFF75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
