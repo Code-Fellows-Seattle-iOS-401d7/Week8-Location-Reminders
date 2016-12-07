@@ -9,19 +9,19 @@ extension String {
     var removeWhitespace: String {
         return components(separatedBy: .whitespaces).joined(separator: "")
     }
-}
 
-func condensed(_ string: String) -> String{
-    return string.lowercased()
-                .removeWhitespace
-                .removePunctuation
-                .characters
-                .sorted()
-                .reduce("", {$0 + String($1) })
+    var condensed: String {
+        return lowercased()
+               .removeWhitespace
+               .removePunctuation
+               .characters
+               .sorted()
+               .reduce("", {$0 + String($1) })
+    }
 }
 
 func anagram(_ str1: String, _ str2: String ) -> Bool{
-    return condensed(str1) == condensed(str2)
+    return str1.condensed == str2.condensed
 }
 
 let resistance = "resistance"
@@ -59,4 +59,8 @@ let poem2 =
 
 anagram(poem1, poem2)
 anagram(resistance, ancestries)
+
+//    print(poem1.condensed)
+//    print(poem2.condensed)
+
 

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "LocationController.h"
+#import "Reminder.h"
 //@import UIKit;
 @import MapKit;
 @import Parse;
@@ -51,6 +52,19 @@
 //            }];
 //        }
 //    }];
+
+
+    Reminder *testReminder = [Reminder object];
+    testReminder.title = @"New Reminder";
+    [testReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        if(succeeded) {
+            NSLog(@"Check your Parse dashboard");
+        }
+    }];
+
 
 
     [self requestPermissions];
@@ -110,6 +124,22 @@
     [super viewDidAppear:animated];
 
     [[[LocationController sharedController] manager] startUpdatingLocation];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(reminderCreatedNotificationFired)
+                                                name:@"ReminderCreated"
+                                               object:nil];
+}
+
+-(void)reminderCreatedNotificationFired{
+    NSLog(@"Reminder was created. NSLog fired from %@.", self);
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"ReminderCreated"
+                                                  object:nil];
+
 }
 
 -(void)requestPermissions{
@@ -195,10 +225,28 @@
             DetailViewController *detailViewController = (DetailViewController *)segue.destinationViewController;
             detailViewController.annotationTitle = annotationView.annotation.title;
             detailViewController.coordinate = annotationView.annotation.coordinate;
+
+            __weak typeof(self) bruceBanner = self;
+
+            detailViewController.completion = ^(MKCircle *circle){
+                __strong typeof(bruceBanner) hulk = bruceBanner;
+
+                //[hulk.mapView removeAnnotation:annotationView.annotation];
+                [hulk.mapView addOverlay:circle];
+            };
         }
     }
 }
 
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
+    MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+    renderer.fillColor = [UIColor blueColor];
+    //renderer.strokeColor = [UIColor purpleColor];
+
+    renderer.alpha = 0.5;
+
+    return renderer;
+}
 @end
 
 

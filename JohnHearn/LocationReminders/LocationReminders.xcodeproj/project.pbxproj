@@ -20,6 +20,8 @@
 		F28B25861DF603CA00DEFF75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28B25851DF603CA00DEFF75 /* MapKit.framework */; };
 		F28B25A01DF740F000DEFF75 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28B259F1DF740F000DEFF75 /* LocationController.m */; };
 		F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28B25A21DF74FC700DEFF75 /* DetailViewController.m */; };
+		F28E6CF91DF8853400CC1A42 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F28E6CF81DF8853400CC1A42 /* Reminder.m */; };
+		F28E6CFD1DF8B2A500CC1A42 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -66,6 +68,9 @@
 		F28B259F1DF740F000DEFF75 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
 		F28B25A11DF74FC700DEFF75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F28B25A21DF74FC700DEFF75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		F28E6CF71DF8853400CC1A42 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		F28E6CF81DF8853400CC1A42 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 			files = (
 				F28B257E1DF5EC8800DEFF75 /* Bolts.framework in Frameworks */,
 				F28B25861DF603CA00DEFF75 /* MapKit.framework in Frameworks */,
+				F28E6CFD1DF8B2A500CC1A42 /* ParseUI.framework in Frameworks */,
 				F28B257F1DF5EC8800DEFF75 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +112,8 @@
 				F28B25681DF5E8A200DEFF75 /* AppDelegate.m */,
 				F28B256A1DF5E8A200DEFF75 /* ViewController.h */,
 				F28B256B1DF5E8A200DEFF75 /* ViewController.m */,
+				F28E6CF71DF8853400CC1A42 /* Reminder.h */,
+				F28E6CF81DF8853400CC1A42 /* Reminder.m */,
 				F28B256D1DF5E8A200DEFF75 /* Main.storyboard */,
 				F28B259E1DF740F000DEFF75 /* LocationController.h */,
 				F28B259F1DF740F000DEFF75 /* LocationController.m */,
@@ -131,9 +139,10 @@
 		F28B257B1DF5EC8800DEFF75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F28B25851DF603CA00DEFF75 /* MapKit.framework */,
 				F28B257C1DF5EC8800DEFF75 /* Bolts.framework */,
+				F28B25851DF603CA00DEFF75 /* MapKit.framework */,
 				F28B257D1DF5EC8800DEFF75 /* Parse.framework */,
+				F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */,
+				F28E6CF91DF8853400CC1A42 /* Reminder.m in Sources */,
 				F28B25A01DF740F000DEFF75 /* LocationController.m in Sources */,
 				F28B256C1DF5E8A200DEFF75 /* ViewController.m in Sources */,
 				F28B25691DF5E8A200DEFF75 /* AppDelegate.m in Sources */,
@@ -345,6 +355,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -361,6 +372,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

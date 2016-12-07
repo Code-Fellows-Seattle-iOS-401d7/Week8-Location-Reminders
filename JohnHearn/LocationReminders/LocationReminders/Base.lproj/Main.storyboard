@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -117,7 +118,28 @@
                     <view key="view" contentMode="scaleToFill" id="Eyy-z0-2ZY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMZ-A2-Fzz">
+                                <rect key="frame" x="32" y="308" width="311" height="50"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BgF-Db-9Gx"/>
+                                </constraints>
+                                <state key="normal" title="Save Reminder">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveReminderPressed:" destination="myi-d3-PzP" eventType="touchUpInside" id="5Yn-Fv-gSQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="tMZ-A2-Fzz" secondAttribute="trailing" constant="16" id="2GU-kG-Tal"/>
+                            <constraint firstItem="tMZ-A2-Fzz" firstAttribute="centerY" secondItem="Eyy-z0-2ZY" secondAttribute="centerY" id="58Z-d2-5fX"/>
+                            <constraint firstItem="tMZ-A2-Fzz" firstAttribute="centerX" secondItem="Eyy-z0-2ZY" secondAttribute="centerX" id="VtE-FT-rTc"/>
+                            <constraint firstItem="tMZ-A2-Fzz" firstAttribute="leading" secondItem="Eyy-z0-2ZY" secondAttribute="leadingMargin" constant="16" id="vFb-2X-Krs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLW-ja-WoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
