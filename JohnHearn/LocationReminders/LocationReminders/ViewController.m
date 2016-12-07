@@ -10,12 +10,16 @@
 #import "DetailViewController.h"
 #import "LocationController.h"
 #import "Reminder.h"
-//@import UIKit;
+
 @import MapKit;
 @import Parse;
+@import ParseUI;
 
 
-@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController ()<MKMapViewDelegate,
+                             LocationControllerDelegate,
+                             PFLogInViewControllerDelegate,
+                             PFSignUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSMutableDictionary *coffeeShops;
@@ -71,6 +75,8 @@
     self.mapView.delegate = self;
     [LocationController sharedController].delegate =self;
     [self.mapView setShowsUserLocation:YES];
+
+    [self login];
 
     self.coffeeShops = [[NSMutableDictionary alloc] init];
     [self loadCoffeeShopAnnotations];
@@ -247,6 +253,47 @@
 
     return renderer;
 }
+
+//MARK: ParseUI
+
+-(void)login{
+    if(![PFUser currentUser]) {
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc] init];
+
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+
+        [self presentViewController:loginViewController
+                           animated:YES
+                         completion:nil];
+    } else {
+
+    }
+}
+
+-(void)setupAdditionalUI{
+    UIBarButtonItem *signOut = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain
+                                                               target:self
+                                                               action:@selector(signOutPressed)];
+    self.navigationItem.leftBarButtonItem = signOut;
+}
+
+-(void)signOutPressed{
+    [PFUser logOut];
+    [self login];
+}
+
+//MARK: ParseUI Delegate Methods
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
+
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
+
 @end
 
 

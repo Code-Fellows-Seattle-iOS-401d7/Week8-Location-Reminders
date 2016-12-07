@@ -22,6 +22,7 @@
 		F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28B25A21DF74FC700DEFF75 /* DetailViewController.m */; };
 		F28E6CF91DF8853400CC1A42 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F28E6CF81DF8853400CC1A42 /* Reminder.m */; };
 		F28E6CFD1DF8B2A500CC1A42 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */; };
+		F28E6CFE1DF8B42500CC1A42 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -42,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F28E6CFE1DF8B42500CC1A42 /* ParseUI.framework in CopyFiles */,
 				F28B25831DF5ED8D00DEFF75 /* Bolts.framework in CopyFiles */,
 				F28B25821DF5ED8900DEFF75 /* Parse.framework in CopyFiles */,
 			);
