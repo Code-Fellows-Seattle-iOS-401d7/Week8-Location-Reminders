@@ -18,6 +18,8 @@
 		0199C2751DF5F5E70001A828 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0199C2721DF5F5D70001A828 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0199C2761DF5F5F00001A828 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0199C2701DF5F5CB0001A828 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0199C2781DF603A90001A828 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0199C2771DF603A90001A828 /* MapKit.framework */; };
+		0199C27B1DF740FE0001A828 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C27A1DF740FE0001A828 /* LocationController.m */; };
+		0199C27E1DF74FB70001A828 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C27D1DF74FB70001A828 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,10 @@
 		0199C2701DF5F5CB0001A828 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		0199C2721DF5F5D70001A828 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		0199C2771DF603A90001A828 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0199C2791DF740FE0001A828 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		0199C27A1DF740FE0001A828 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		0199C27C1DF74FB70001A828 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		0199C27D1DF74FB70001A828 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,10 @@
 				0199C2561DF5E8A10001A828 /* ViewController.h */,
 				0199C2571DF5E8A10001A828 /* ViewController.m */,
 				0199C2591DF5E8A20001A828 /* Main.storyboard */,
+				0199C27C1DF74FB70001A828 /* DetailViewController.h */,
+				0199C27D1DF74FB70001A828 /* DetailViewController.m */,
+				0199C2791DF740FE0001A828 /* LocationController.h */,
+				0199C27A1DF740FE0001A828 /* LocationController.m */,
 				0199C25C1DF5E8A20001A828 /* Assets.xcassets */,
 				0199C25E1DF5E8A20001A828 /* LaunchScreen.storyboard */,
 				0199C2611DF5E8A20001A828 /* Info.plist */,
@@ -199,6 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0199C27E1DF74FB70001A828 /* DetailViewController.m in Sources */,
+				0199C27B1DF740FE0001A828 /* LocationController.m in Sources */,
 				0199C2581DF5E8A10001A828 /* ViewController.m in Sources */,
 				0199C2551DF5E8A10001A828 /* AppDelegate.m in Sources */,
 				0199C2521DF5E8A10001A828 /* main.m in Sources */,
