@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="opa-UZ-MOd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,7 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Bf-TLS"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Bf-TLS">
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XM0-HO-jsk" appends="YES" id="22W-1a-xmB"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwZ-dh-8qL">
                                 <color key="backgroundColor" red="1" green="0.67226733670000005" blue="0.49165077870000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SET LOCATION">
@@ -59,23 +64,66 @@
                             <constraint firstItem="xta-Bf-TLS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7d3-4I-dMc"/>
                             <constraint firstItem="fak-Dw-U4h" firstAttribute="width" secondItem="xta-Bf-TLS" secondAttribute="width" id="9Fn-QX-xN2"/>
                             <constraint firstItem="ZcH-1p-RaB" firstAttribute="leading" secondItem="fak-Dw-U4h" secondAttribute="leading" id="PIl-WM-pB2"/>
-                            <constraint firstItem="xta-Bf-TLS" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="QKf-6V-LRe"/>
+                            <constraint firstItem="xta-Bf-TLS" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="QKf-6V-LRe"/>
                             <constraint firstItem="ZcH-1p-RaB" firstAttribute="trailing" secondItem="yYU-a4-WRP" secondAttribute="trailing" id="SrU-4b-LQP"/>
                             <constraint firstItem="NwZ-dh-8qL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="75" id="TxP-YH-8Uc"/>
                             <constraint firstItem="ZcH-1p-RaB" firstAttribute="top" secondItem="fak-Dw-U4h" secondAttribute="bottom" constant="8" symbolic="YES" id="U3O-ad-hWu"/>
                             <constraint firstItem="xta-Bf-TLS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WFt-RL-cr3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fak-Dw-U4h" secondAttribute="bottom" constant="122" id="Ygv-eJ-l9I"/>
-                            <constraint firstItem="xta-Bf-TLS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="dNm-gs-79p"/>
+                            <constraint firstItem="xta-Bf-TLS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="dNm-gs-79p"/>
                             <constraint firstItem="ZcH-1p-RaB" firstAttribute="trailing" secondItem="fak-Dw-U4h" secondAttribute="trailing" id="gkL-3G-TvH"/>
                             <constraint firstItem="yYU-a4-WRP" firstAttribute="top" secondItem="ZcH-1p-RaB" secondAttribute="bottom" constant="8" symbolic="YES" id="krz-Fg-l4O"/>
                             <constraint firstItem="NwZ-dh-8qL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sHF-hX-2Da"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aCK-hM-0ge"/>
                     <connections>
                         <outlet property="mapView" destination="xta-Bf-TLS" id="ziQ-bT-gab"/>
+                        <segue destination="RjV-He-eil" kind="show" identifier="DetailViewController" id="ssg-82-95w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XM0-HO-jsk">
+                    <connections>
+                        <action selector="mapLongPressed:" destination="BYZ-38-t0r" id="MyY-fE-T6r"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1076" y="105.69715142428787"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="DnN-s7-8vH">
+            <objects>
+                <viewController id="RjV-He-eil" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XjV-vn-5KI"/>
+                        <viewControllerLayoutGuide type="bottom" id="5zG-Sq-abt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SbI-3d-64D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ix2-K9-mJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="106"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U5u-Xz-pwC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="opa-UZ-MOd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qXe-HI-9Nd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HrT-6h-cPY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ysi-3d-HLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="105.69715142428787"/>
         </scene>

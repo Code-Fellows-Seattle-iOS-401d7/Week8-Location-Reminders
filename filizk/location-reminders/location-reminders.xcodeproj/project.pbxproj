@@ -24,6 +24,8 @@
 		BD4AE2181DF61D4E00C410EA /* MyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE2171DF61D4E00C410EA /* MyQueue.m */; };
 		BD4AE21B1DF638F200C410EA /* MyStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE21A1DF638F200C410EA /* MyStack.m */; };
 		BD4AE2251DF66CB500C410EA /* location_remindersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE2241DF66CB500C410EA /* location_remindersTests.m */; };
+		BD4AE22E1DF7410100C410EA /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE22D1DF7410100C410EA /* LocationController.m */; };
+		BD4AE2311DF74FB900C410EA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4AE2301DF74FB900C410EA /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		BD4AE2221DF66CB500C410EA /* location-remindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "location-remindersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4AE2241DF66CB500C410EA /* location_remindersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = location_remindersTests.m; sourceTree = "<group>"; };
 		BD4AE2261DF66CB500C410EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD4AE22C1DF7410100C410EA /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		BD4AE22D1DF7410100C410EA /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		BD4AE22F1DF74FB900C410EA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BD4AE2301DF74FB900C410EA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +137,11 @@
 		BD4AE1E41DF5E8A700C410EA /* location-reminders */ = {
 			isa = PBXGroup;
 			children = (
-				BD4AE2041DF5EF2D00C410EA /* ParseConstants.m */,
-				BD4AE2061DF5EFA300C410EA /* ParseConstants.h */,
+				BD4AE2341DF77F3B00C410EA /* View */,
+				BD4AE2331DF77F3500C410EA /* Model */,
+				BD4AE2321DF77F2700C410EA /* ViewControllers */,
 				BD4AE1E81DF5E8A700C410EA /* AppDelegate.h */,
 				BD4AE1E91DF5E8A700C410EA /* AppDelegate.m */,
-				BD4AE1EB1DF5E8A700C410EA /* ViewController.h */,
-				BD4AE1EC1DF5E8A700C410EA /* ViewController.m */,
 				BD4AE1EE1DF5E8A700C410EA /* Main.storyboard */,
 				BD4AE1F11DF5E8A700C410EA /* Assets.xcassets */,
 				BD4AE1F31DF5E8A700C410EA /* LaunchScreen.storyboard */,
@@ -182,6 +187,35 @@
 				BD4AE2261DF66CB500C410EA /* Info.plist */,
 			);
 			path = "location-remindersTests";
+			sourceTree = "<group>";
+		};
+		BD4AE2321DF77F2700C410EA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD4AE1EB1DF5E8A700C410EA /* ViewController.h */,
+				BD4AE1EC1DF5E8A700C410EA /* ViewController.m */,
+				BD4AE22F1DF74FB900C410EA /* DetailViewController.h */,
+				BD4AE2301DF74FB900C410EA /* DetailViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BD4AE2331DF77F3500C410EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD4AE2041DF5EF2D00C410EA /* ParseConstants.m */,
+				BD4AE2061DF5EFA300C410EA /* ParseConstants.h */,
+				BD4AE22C1DF7410100C410EA /* LocationController.h */,
+				BD4AE22D1DF7410100C410EA /* LocationController.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BD4AE2341DF77F3B00C410EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,8 +332,10 @@
 				BD4AE21B1DF638F200C410EA /* MyStack.m in Sources */,
 				BD4AE1ED1DF5E8A700C410EA /* ViewController.m in Sources */,
 				BD4AE1EA1DF5E8A700C410EA /* AppDelegate.m in Sources */,
+				BD4AE2311DF74FB900C410EA /* DetailViewController.m in Sources */,
 				BD4AE1E71DF5E8A700C410EA /* main.m in Sources */,
 				BD4AE2051DF5EF2D00C410EA /* ParseConstants.m in Sources */,
+				BD4AE22E1DF7410100C410EA /* LocationController.m in Sources */,
 				BD4AE2181DF61D4E00C410EA /* MyQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
