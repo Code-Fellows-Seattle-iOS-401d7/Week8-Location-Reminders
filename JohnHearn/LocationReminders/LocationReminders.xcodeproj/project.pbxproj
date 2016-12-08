@@ -23,6 +23,8 @@
 		F28E6CF91DF8853400CC1A42 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F28E6CF81DF8853400CC1A42 /* Reminder.m */; };
 		F28E6CFD1DF8B2A500CC1A42 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */; };
 		F28E6CFE1DF8B42500CC1A42 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F28E6D011DF8D2D500CC1A42 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28E6D001DF8D2D500CC1A42 /* LogInViewController.m */; };
+		F28E6D041DF8D2FF00CC1A42 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28E6D031DF8D2FF00CC1A42 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -73,6 +75,10 @@
 		F28E6CF71DF8853400CC1A42 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		F28E6CF81DF8853400CC1A42 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		F28E6CFC1DF8B2A500CC1A42 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		F28E6CFF1DF8D2D500CC1A42 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		F28E6D001DF8D2D500CC1A42 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		F28E6D021DF8D2FF00CC1A42 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		F28E6D031DF8D2FF00CC1A42 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,10 @@
 				F28B25841DF5EEED00DEFF75 /* Credentials.h */,
 				F28B25A11DF74FC700DEFF75 /* DetailViewController.h */,
 				F28B25A21DF74FC700DEFF75 /* DetailViewController.m */,
+				F28E6CFF1DF8D2D500CC1A42 /* LogInViewController.h */,
+				F28E6D001DF8D2D500CC1A42 /* LogInViewController.m */,
+				F28E6D021DF8D2FF00CC1A42 /* SignUpViewController.h */,
+				F28E6D031DF8D2FF00CC1A42 /* SignUpViewController.m */,
 			);
 			path = LocationReminders;
 			sourceTree = "<group>";
@@ -228,11 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28E6D011DF8D2D500CC1A42 /* LogInViewController.m in Sources */,
 				F28B25A31DF74FC700DEFF75 /* DetailViewController.m in Sources */,
 				F28E6CF91DF8853400CC1A42 /* Reminder.m in Sources */,
 				F28B25A01DF740F000DEFF75 /* LocationController.m in Sources */,
 				F28B256C1DF5E8A200DEFF75 /* ViewController.m in Sources */,
 				F28B25691DF5E8A200DEFF75 /* AppDelegate.m in Sources */,
+				F28E6D041DF8D2FF00CC1A42 /* SignUpViewController.m in Sources */,
 				F28B25661DF5E8A200DEFF75 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

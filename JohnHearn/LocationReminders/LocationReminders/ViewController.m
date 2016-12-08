@@ -5,15 +5,15 @@
 //  Created by John D Hearn on 12/5/16.
 //  Copyright © 2016 Bastardized Productions. All rights reserved.
 //
-
+@import MapKit;
+@import Parse;
+@import ParseUI;
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "LocationController.h"
 #import "Reminder.h"
-
-@import MapKit;
-@import Parse;
-@import ParseUI;
+#import "LogInViewController.h"
+#import "SignupViewController.h"
 
 
 @interface ViewController ()<MKMapViewDelegate,
@@ -257,17 +257,20 @@
 //MARK: ParseUI
 
 -(void)login{
-    if(![PFUser currentUser]) {
-        PFLogInViewController *loginViewController = [[PFLogInViewController alloc] init];
+    if (![PFUser currentUser]) {
+
+        LogInViewController *loginViewController = [[LogInViewController alloc] init];
+
+        loginViewController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsDefault;
+
 
         loginViewController.delegate = self;
         loginViewController.signUpController.delegate = self;
 
-        [self presentViewController:loginViewController
-                           animated:YES
-                         completion:nil];
-    } else {
+        [self presentViewController:loginViewController animated:YES completion:nil];
 
+    } else {
+        [self setupAdditionalUI];
     }
 }
 
@@ -287,6 +290,10 @@
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user{
     [self dismissViewControllerAnimated:YES completion:nil];
     [self setupAdditionalUI];
+}
+
+-(void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController{
+    [self login];
 }
 
 -(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
