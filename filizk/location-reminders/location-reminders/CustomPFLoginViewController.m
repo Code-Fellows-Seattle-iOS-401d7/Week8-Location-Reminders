@@ -10,11 +10,14 @@
 
 @implementation CustomPFLoginViewController
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    self.signUpController.signUpView.backgroundColor = [UIColor blueColor];
+    
+}
 
 
 -(void)changeLogo {
-    //UIView *uiv = [[UIView alloc]init];
-    //uiv.
     UIImage *kiddoLogo = [UIImage imageNamed:@"kiddo.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:kiddoLogo];
     self.logInView.backgroundColor = [UIColor orangeColor];

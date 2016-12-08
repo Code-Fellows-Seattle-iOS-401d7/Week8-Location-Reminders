@@ -13,6 +13,7 @@
 @dynamic title;
 @dynamic radius;
 @dynamic location;
+@dynamic priority;
 
 +(NSString *)parseClassName {
     return @"Reminder"; //This is the class name

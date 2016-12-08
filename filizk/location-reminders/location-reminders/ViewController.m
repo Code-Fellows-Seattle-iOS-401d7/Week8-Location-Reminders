@@ -23,8 +23,8 @@
 
 @interface ViewController () <MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) NSMutableArray *locations;
-//@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSArray *locations;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -74,54 +74,26 @@
         }
     }];
 
-    //[self requestPermissions];
-    //[self.mapView setShowsUserLocation:YES];
-
 
     self.mapView.delegate = self;
     LocationController.sharedController.delegate = self;
 
 
-    self.locations = [[NSMutableArray alloc]init];
 
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6580, -122.351096);
-    MKPointAnnotation *newMapPoint = [[MKPointAnnotation alloc]init];
-    newMapPoint.coordinate = coordinate;
-    newMapPoint.title = @"Barber Top24";
-    [self.locations addObject:newMapPoint];
-    
-
-    coordinate = CLLocationCoordinate2DMake(47.6570, -122.35109);
-    newMapPoint = [[MKPointAnnotation alloc]init];
-    newMapPoint.coordinate = coordinate;
-    newMapPoint.title = @"Pizza Heaven";
-    [self.locations addObject:newMapPoint];
-
-    coordinate = CLLocationCoordinate2DMake(47.6550, -122.3530);
-    newMapPoint = [[MKPointAnnotation alloc]init];
-    newMapPoint.coordinate = coordinate;
-    newMapPoint.title = @"Candy Shop";
-    [self.locations addObject:newMapPoint];
-
-    coordinate = CLLocationCoordinate2DMake(47.6575, -122.3512);
-    newMapPoint = [[MKPointAnnotation alloc]init];
-    newMapPoint.coordinate = coordinate;
-    newMapPoint.title = @"Target";
-    [self.locations addObject:newMapPoint];
-
-    coordinate = CLLocationCoordinate2DMake(47.6567, -122.35109);
-    newMapPoint = [[MKPointAnnotation alloc]init];
-    newMapPoint.coordinate = coordinate;
-    newMapPoint.title = @"Houzz";
-    [self.locations addObject:newMapPoint];
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6580, -122.351096);
+//    MKPointAnnotation *newMapPoint = [[MKPointAnnotation alloc]init];
+//    newMapPoint.coordinate = coordinate;
+//    newMapPoint.title = @"Barber Top24";
+//    [self.locations addObject:newMapPoint];
 
 
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
-    [self.mapView setRegion:region animated:YES];
+    //MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
+    //[self.mapView setRegion:region animated:YES];
 
-    [self logIn];
-   // [self testQueue];
-   // [self testStack];
+//    [self logIn];
+
+    //[self requestPermissions];
+    [self.mapView setShowsUserLocation:YES];
 
 }
 - (IBAction)mapLongPressed:(UILongPressGestureRecognizer *)sender {
@@ -142,15 +114,13 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    [[[LocationController sharedController] manager] startUpdatingLocation];
+    [[[LocationController sharedController] manager] startUpdatingLocation]; //setting this makes the future calls to didUpdateLocation in the singletion
 
-//    for (MKPointAnnotation *annotation in self.locations) {
-//        [self.mapView addAnnotation:annotation];
-//    }
+    [self getReminders];
 
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566, -122.351096);
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
-    [self.mapView setRegion:region animated:YES];
+   // CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.78583400, -122.40641700);
+    //MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
+    //[self.mapView setRegion:region animated:YES];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reminderCreatedNotificationFired) name:@"ReminderCreated" object:nil];
 
@@ -225,6 +195,34 @@
     }
 }
 
+-(void)getReminders {
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+
+     __weak typeof(self) weakSelf = self;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+         __strong typeof(weakSelf) hulk = weakSelf;
+        if (!error) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                hulk.locations = objects; // these are reminders objects.
+
+                for (Reminder *reminder in hulk.locations) {
+
+                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(reminder.location.latitude, reminder.location.longitude);
+                    MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
+                    annotation.coordinate = coordinate;
+                    annotation.title = reminder.title;
+
+                    [hulk.mapView addAnnotation:annotation];
+                }
+
+                NSLog(@"%@", objects);
+            }];
+        }
+    }];
+
+
+
+}
 
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
@@ -323,47 +321,44 @@
 //    [self.locationManager requestWhenInUseAuthorization];
 //
 //}
-//Coordinates for Denmark: 55.676098, 12.568337
-- (IBAction)setLocationToDenmark:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(55.676098, 12.568337);
+////Coordinates for Denmark: 55.676098, 12.568337
+//- (IBAction)setLocationToDenmark:(id)sender {
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(55.676098, 12.568337);
+//
+//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
+//
+//    [self.mapView setRegion:region animated:YES];
+//
+//}
+//
+//- (IBAction)setLocationToAfrica:(id)sender {
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(0, 0);
+//
+//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 2000000, 2000000);
+//
+//    [self.mapView setRegion:region animated:YES];
+//}
+//
+////41.015137	28.979530
+//- (IBAction)setLocationToTurkey:(id)sender {
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(41.015137, 28.979530);
+//
+//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
+//
+//    [self.mapView setRegion:region animated:YES];
+//
+//}
+//
+//- (IBAction)setLocationPressed:(id)sender {
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566, -122.351096);
+//
+//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
+//
+//    [self.mapView setRegion:region animated:YES];
+//
+//}
 
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
 
-    [self.mapView setRegion:region animated:YES];
-
-}
-
-- (IBAction)setLocationToAfrica:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(0, 0);
-
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 2000000, 2000000);
-
-    [self.mapView setRegion:region animated:YES];
-}
-
-//41.015137	28.979530
-- (IBAction)setLocationToTurkey:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(41.015137, 28.979530);
-
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
-
-    [self.mapView setRegion:region animated:YES];
-
-}
-
-- (IBAction)setLocationPressed:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566, -122.351096);
-
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
-
-    [self.mapView setRegion:region animated:YES];
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

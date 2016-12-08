@@ -44,9 +44,18 @@
 
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    //NSLog(@"**locaiton %@", locations.lastObject.coordinate);
     [self.delegate locationControllerUpdatedLocation:locations.lastObject];
     [self setLocation:locations.lastObject];
+    NSLog(@"**locaiton %@", self.location);
 }
 
+-(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(nonnull CLRegion *)region {
+    NSLog(@"**Started Monitoring Region for:%@", region);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(nonnull CLRegion *)region {
+    NSLog(@"**USER DID ENTER REGION", region);
+}
 
 @end
