@@ -112,12 +112,34 @@
                     <view key="view" contentMode="scaleToFill" id="bdj-Ti-O3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdh-Su-xSa">
+                                <rect key="frame" x="16" y="308" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="x3d-g2-2Yw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="SAVE REMINDER">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveReminderPressed:" destination="8qr-Qz-63G" eventType="touchUpInside" id="XSX-U5-EpU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mdh-Su-xSa" firstAttribute="centerY" secondItem="bdj-Ti-O3O" secondAttribute="centerY" id="3h5-y1-eJS"/>
+                            <constraint firstItem="Mdh-Su-xSa" firstAttribute="centerX" secondItem="bdj-Ti-O3O" secondAttribute="centerX" id="pGk-KI-rIF"/>
+                            <constraint firstItem="Mdh-Su-xSa" firstAttribute="leading" secondItem="bdj-Ti-O3O" secondAttribute="leading" constant="16" id="tiV-AD-DtG"/>
+                            <constraint firstAttribute="trailing" secondItem="Mdh-Su-xSa" secondAttribute="trailing" constant="16" id="vbm-5K-ajP"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOS-ar-yyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1894" y="124"/>
+            <point key="canvasLocation" x="1893.5999999999999" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cHU-B0-QSY">

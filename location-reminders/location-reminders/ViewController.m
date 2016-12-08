@@ -9,12 +9,17 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "LocationController.h"
+#import "Reminder.h"
+
 
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+
+
 
 @import MapKit;
 
-@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -33,12 +38,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Reminder *testReminder = [Reminder object];
+    testReminder.title = @"New Reminder";
+    [testReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        if (succeeded) {
+            NSLog(@"Check your dashboard for saved reminder.");
+        }
+    }];
+    
+        PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    
+    
+    
+        testObject[@"foo"] = @"bar";
+    
+        [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
+    
+            if(error) {
+                NSLog(@"%@", error.localizedDescription);
+                return;
+            }
+    
+            if(succeeded) {
+                NSLog(@"Successfully saved testObject");
+            }
+            
+        }];
+
+    
     [self requestPermissions];
     
     self.mapView.delegate = self;
     [LocationController sharedController].delegate = self;
 
     [self.mapView setShowsUserLocation:YES];
+    [self login];
+
     
     //5 default pins go here
     //first:
@@ -70,6 +109,7 @@
     defaultPoint5.title = @"Zion";
     defaultPoint5.coordinate = CLLocationCoordinate2DMake(37.317207, -113.022537);
     [self.mapView addAnnotation:defaultPoint5];
+    
 }
 
 
@@ -77,8 +117,19 @@
     [super viewDidAppear:animated];
     [[[LocationController sharedController]manager]startUpdatingLocation];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reminderCreatedNotificationFired) name:@"ReminderCreated" object:nil];
+    
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ReminderCreated" object:nil];
+}
+
+-(void)reminderCreatedNotificationFired{
+    
+    NSLog(@"Reminder was created. NSLog fired from %@", self);
+    
+}
 
 
 
@@ -158,14 +209,14 @@
     }
     
     
-    uint32_t randomIndex = arc4random_uniform(self.colorArray.count);
-    
+//    int randomIndex = arc4random_uniform(self.colorArray.count);
+    NSNumber *randomIndex = [NSNumber numberWithUnsignedInt:arc4random_uniform(self.colorArray.count)];
     
     self.colorArray = [[NSArray alloc]initWithObjects:[UIColor redColor],[UIColor blueColor], [UIColor greenColor], [UIColor yellowColor], [UIColor whiteColor], [UIColor blackColor], [UIColor purpleColor], [UIColor brownColor], [UIColor cyanColor], [UIColor magentaColor], nil];
     
     annotationView.canShowCallout = YES;
     annotationView.animatesDrop = YES;
-    annotationView.pinTintColor = self.colorArray[randomIndex];
+    annotationView.pinTintColor = self.colorArray[randomIndex.intValue];
     
     UIButton *rightCalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
@@ -190,30 +241,80 @@
             
             detailViewController.annotationTitle = annotationView.annotation.title;
             detailViewController.coordinate = annotationView.annotation.coordinate;
+            
+            __weak typeof(self) bruce = self;
+            
+            detailViewController.completion = ^(MKCircle *circle){
+                
+                __strong typeof(bruce) hulk = bruce;
+                
+                [hulk.mapView removeAnnotation:annotationView.annotation];
+                [hulk.mapView addOverlay:circle]; //this line triggers MKOverlayRenderer method below
+                
+                
+            };
+            
         }
     }
 }
 
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
+    
+    MKCircleRenderer *renderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
+    renderer.fillColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.25];
+    renderer.alpha = 0.5;
+    
+    return renderer;
+    
+}
 
 
-//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-//
-//       
-//
-//    testObject[@"foo"] = @"bar";
-//    
-//    [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
-//        
-//        if(error) {
-//            NSLog(@"%@", error.localizedDescription);
-//            return;
-//        }
-//        
-//        if(succeeded) {
-//            NSLog(@"Successfully saved testObject");
-//        }
-//        
-//    }];
+
+//MARK: ParseUI Stuff
+-(void)login{
+    
+    if (![PFUser currentUser]) {
+        
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+        
+        [self presentViewController:loginViewController animated:YES completion:nil];
+        
+    } else {
+        [self setupAdditionalUI];
+    }
+    
+}
+
+-(void)setupAdditionalUI{
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOutPressed)];
+    
+    self.navigationItem.leftBarButtonItem = signOutButton;
+}
+
+
+-(void)signOutPressed{
+    [PFUser logOut];
+    [self login];
+}
+
+
+//MARK: Parse Delegate Methods
+
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
+
+-(void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController{
+    [self login];
+}
+
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
 
 
 
