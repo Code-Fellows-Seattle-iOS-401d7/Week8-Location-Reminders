@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "LocationController.h"
+@import UserNotifications;
 
 @interface DetailViewController ()
 
@@ -37,19 +39,77 @@
     PFGeoPoint *reminderPoint = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude
                                                        longitude:self.coordinate.longitude];
 
-    newReminder.location = reminderPoint;
+    __weak typeof(self) bruceBanner = self;
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReminderCreated"
-                                                        object:nil];
+    [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        __strong typeof(bruceBanner) hulk = bruceBanner;
 
-    if(self.completion) {
-        MKCircle *newCircle = [MKCircle circleWithCenterCoordinate:self.coordinate
-                                                            radius:radius.floatValue];
-        self.completion(newCircle);
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
+        if(error) {
+            NSLog(@"%@",error.localizedDescription);
+        }
+        else {
+            NSLog(@"Save New Reminder to Parse Success: %i", succeeded);
+
+
+            if(self.completion){
+
+
+                if([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                    CLCircularRegion *region =
+                            [[CLCircularRegion alloc] initWithCenter:hulk.coordinate
+                                                             radius:newReminder.radius.floatValue
+                                                         identifier:newReminder.title];          //TODO: Find a better identifier
+
+                    [[LocationController sharedController].manager startMonitoringForRegion:region];
+
+                    [hulk createNotificationForRegion:region withName:newReminder.title];
+                }
+
+                MKCircle *newCircle = [MKCircle circleWithCenterCoordinate:hulk.coordinate
+                                                                    radius:radius.floatValue];
+                hulk.completion(newCircle);
+                [hulk.navigationController popViewControllerAnimated:YES];
+            }
+
+        }
+    }];
+
+
+//    newReminder.location = reminderPoint;
+//
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReminderCreated"
+//                                                        object:nil];
+//
+//    if(self.completion) {
+//        MKCircle *newCircle = [MKCircle circleWithCenterCoordinate:self.coordinate
+//                                                            radius:radius.floatValue];
+//        self.completion(newCircle);
+//        [self.navigationController popViewControllerAnimated:YES];
+//        
+//    }
 }
 
+
+-(void)createNotificationForRegion:(CLRegion *)region withName:(NSString *)reminderName{
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Location Reminder";
+    content.body = [NSString stringWithFormat:@"You're close to %@", reminderName];
+    content.sound = [UNNotificationSound defaultSound];
+
+    UNLocationNotificationTrigger *trigger = [UNLocationNotificationTrigger triggerWithRegion:region
+                                                                                      repeats:YES];
+
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:reminderName  //TODO: bad identifier
+                                                                          content:content
+                                                                          trigger:trigger];
+
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Eror adding notification:", error);
+        }
+    }];
+}
 
 @end

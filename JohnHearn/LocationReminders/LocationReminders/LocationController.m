@@ -9,7 +9,6 @@
 #import "LocationController.h"
 
 @interface LocationController()<CLLocationManagerDelegate>
-
 @end
 
 @implementation LocationController
@@ -37,7 +36,6 @@
 
         [_manager requestAlwaysAuthorization];
     }
-
     return self;
 }
 
@@ -46,4 +44,31 @@
     [self setLocation:locations.lastObject];
 }
 
+-(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
+    NSLog(@"Started monitoring region for: %@", region);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    NSLog(@"User DID ENTER REGION: %@", region);
+}
+
+-(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
+    NSLog(@"ERROR!!");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"ERROR!!");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"ERROR!!");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    NSLog(@"Left Region!");
+
+}
+
 @end
+
+

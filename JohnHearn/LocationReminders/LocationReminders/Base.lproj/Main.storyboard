@@ -92,7 +92,13 @@
                             <constraint firstAttribute="trailing" secondItem="Zfv-iR-CPK" secondAttribute="trailing" constant="20" id="nhJ-1n-NxO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0PN-gy-dXo"/>
+                    <navigationItem key="navigationItem" id="0PN-gy-dXo">
+                        <barButtonItem key="rightBarButtonItem" title="Current Location" id="DeE-Yn-psj">
+                            <connections>
+                                <action selector="currentLocationPressed:" destination="BYZ-38-t0r" id="Iel-9U-o0m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Zfv-iR-CPK" id="BrU-a3-Mr9"/>
                         <segue destination="myi-d3-PzP" kind="show" identifier="DetailViewController" id="dA3-Jk-5Na"/>

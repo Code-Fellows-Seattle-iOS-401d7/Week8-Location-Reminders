@@ -160,6 +160,10 @@
     [self.mapView setRegion:region animated:YES];
 }
 
+- (IBAction)currentLocationPressed:(UIBarButtonItem *)sender {
+    //[self.locationManager requestLocation];             //TODO: Why does this crash?
+    [self setLocationTo:self.locationManager.location.coordinate];
+}
 
 - (IBAction)slateCoffeeRoastersPressed:(id)sender {
     [self setLocationTo:[[self.coffeeShops objectForKey:@"slateCoffee"] coordinate]];
