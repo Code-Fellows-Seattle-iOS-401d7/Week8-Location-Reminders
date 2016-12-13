@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010E52761DFA0C840072725A /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010E52751DFA0C840072725A /* LogInViewController.m */; };
 		0199C2521DF5E8A10001A828 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2511DF5E8A10001A828 /* main.m */; };
 		0199C2551DF5E8A10001A828 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2541DF5E8A10001A828 /* AppDelegate.m */; };
 		0199C2581DF5E8A10001A828 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2571DF5E8A10001A828 /* ViewController.m */; };
@@ -23,7 +24,6 @@
 		0199C2811DF885300001A828 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2801DF885300001A828 /* Reminder.m */; };
 		0199C2831DF8B2AD0001A828 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0199C2821DF8B2AC0001A828 /* ParseUI.framework */; };
 		0199C2841DF8B4230001A828 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0199C2821DF8B2AC0001A828 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0199C2871DF91AD00001A828 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2861DF91AD00001A828 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		010E52741DFA0C840072725A /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogInViewController.h; path = ../LogInViewController.h; sourceTree = "<group>"; };
+		010E52751DFA0C840072725A /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogInViewController.m; path = ../LogInViewController.m; sourceTree = "<group>"; };
 		0199C24D1DF5E8A10001A828 /* location-reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "location-reminders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0199C2511DF5E8A10001A828 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0199C2531DF5E8A10001A828 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,8 +67,6 @@
 		0199C27F1DF885300001A828 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		0199C2801DF885300001A828 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		0199C2821DF8B2AC0001A828 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		0199C2851DF91AD00001A828 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		0199C2861DF91AD00001A828 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +104,13 @@
 		0199C24F1DF5E8A10001A828 /* location-reminders */ = {
 			isa = PBXGroup;
 			children = (
+				010E52751DFA0C840072725A /* LogInViewController.m */,
+				010E52741DFA0C840072725A /* LogInViewController.h */,
 				0199C2531DF5E8A10001A828 /* AppDelegate.h */,
 				0199C2541DF5E8A10001A828 /* AppDelegate.m */,
 				0199C26F1DF5EF5D0001A828 /* ParseCredentials.h */,
 				0199C2561DF5E8A10001A828 /* ViewController.h */,
 				0199C2571DF5E8A10001A828 /* ViewController.m */,
-				0199C2851DF91AD00001A828 /* LoginViewController.h */,
-				0199C2861DF91AD00001A828 /* LoginViewController.m */,
 				0199C27F1DF885300001A828 /* Reminder.h */,
 				0199C2801DF885300001A828 /* Reminder.m */,
 				0199C2591DF5E8A20001A828 /* Main.storyboard */,
@@ -225,11 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010E52761DFA0C840072725A /* LogInViewController.m in Sources */,
 				0199C27E1DF74FB70001A828 /* DetailViewController.m in Sources */,
 				0199C2811DF885300001A828 /* Reminder.m in Sources */,
 				0199C27B1DF740FE0001A828 /* LocationController.m in Sources */,
 				0199C2581DF5E8A10001A828 /* ViewController.m in Sources */,
-				0199C2871DF91AD00001A828 /* LoginViewController.m in Sources */,
 				0199C2551DF5E8A10001A828 /* AppDelegate.m in Sources */,
 				0199C2521DF5E8A10001A828 /* main.m in Sources */,
 			);
@@ -400,6 +400,7 @@
 				0199C2661DF5E8A20001A828 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

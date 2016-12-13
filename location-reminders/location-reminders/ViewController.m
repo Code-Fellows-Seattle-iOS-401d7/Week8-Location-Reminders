@@ -7,10 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "LogInViewController.h"
 #import "DetailViewController.h"
 #import "LocationController.h"
 #import "Reminder.h"
-
 
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
@@ -38,38 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    Reminder *testReminder = [Reminder object];
-    testReminder.title = @"New Reminder";
-    [testReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"%@", error.localizedDescription);
-        }
-        if (succeeded) {
-            NSLog(@"Check your dashboard for saved reminder.");
-        }
-    }];
-    
-        PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    
-    
-    
-        testObject[@"foo"] = @"bar";
-    
-        [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
-    
-            if(error) {
-                NSLog(@"%@", error.localizedDescription);
-                return;
-            }
-    
-            if(succeeded) {
-                NSLog(@"Successfully saved testObject");
-            }
-            
-        }];
-
-    
     [self requestPermissions];
     
     self.mapView.delegate = self;
@@ -194,7 +162,6 @@
 
 //MARK: MKMapViewDelegate
 
-//HOMEWORK: Write a function in this method that generates a random color for the head of the pin.
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -209,7 +176,6 @@
     }
     
     
-//    int randomIndex = arc4random_uniform(self.colorArray.count);
     NSNumber *randomIndex = [NSNumber numberWithUnsignedInt:arc4random_uniform(self.colorArray.count)];
     
     self.colorArray = [[NSArray alloc]initWithObjects:[UIColor redColor],[UIColor blueColor], [UIColor greenColor], [UIColor yellowColor], [UIColor whiteColor], [UIColor blackColor], [UIColor purpleColor], [UIColor brownColor], [UIColor cyanColor], [UIColor magentaColor], nil];
@@ -279,6 +245,7 @@
         loginViewController.delegate = self;
         loginViewController.signUpController.delegate = self;
         
+        
         [self presentViewController:loginViewController animated:YES completion:nil];
         
     } else {
@@ -319,6 +286,35 @@
 
 
 
+//Reminder *testReminder = [Reminder object];
+//testReminder.title = @"New Reminder";
+//[testReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//    if (error) {
+//        NSLog(@"%@", error.localizedDescription);
+//    }
+//    if (succeeded) {
+//        NSLog(@"Check your dashboard for saved reminder.");
+//    }
+//}];
+//
+//PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//
+//
+//
+//testObject[@"foo"] = @"bar";
+//
+//[testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
+//    
+//    if(error) {
+//        NSLog(@"%@", error.localizedDescription);
+//        return;
+//    }
+//    
+//    if(succeeded) {
+//        NSLog(@"Successfully saved testObject");
+//    }
+//    
+//}];
 
 
 

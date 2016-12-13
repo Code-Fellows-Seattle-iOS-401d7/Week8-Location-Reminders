@@ -43,6 +43,7 @@
         _manager.distanceFilter = 100;
         
         [_manager requestAlwaysAuthorization];
+        [_manager requestWhenInUseAuthorization];
         
         
     }
@@ -57,16 +58,31 @@
 }
 
 
+-(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
+    NSLog(@"Started Monitoring Region For: %@", region);
+}
 
 
 
 
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    NSLog(@"User Did Enter Region. No bug. %@",region);
+}
 
+-(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
+    NSLog(@"Error");
+}
 
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"Error");
+}
 
+-(void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"Error");
+}
 
-
-
-
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    NSLog(@"Left Region");
+}
 
 @end

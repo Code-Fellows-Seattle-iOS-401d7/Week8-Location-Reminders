@@ -10,7 +10,7 @@
 #import "ParseCredentials.h"
 
 #import <Parse/Parse.h>
-
+@import UserNotifications;
 
 @interface AppDelegate ()
 
@@ -40,10 +40,36 @@
         }
     }];
 
+    [self registerForNotifications];
     
     return YES;
 }
 
-
+-(void)registerForNotifications{
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"User Notifications Error: %@", error.localizedDescription);
+        }
+        if(granted){
+            NSLog(@"We Have Permissions For UserNotifications");
+        }
+    }];
+}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
