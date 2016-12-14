@@ -18,7 +18,7 @@
     
     static LocationController *sharedController;
     
-    //Got this from "dispatch once" search in utilities
+    //example of GCD
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -29,6 +29,63 @@
     return sharedController;
     
 }
+
+//5 custom errors
+
+-(void)errorOne {
+    NSString *domain = @"MyBad";
+    NSInteger code  = 500;
+    NSDictionary *userInfo = @{@"Description" : @"Server Error"};
+    
+    NSError *error = [NSError errorWithDomain:domain
+                                        code:code
+                                        userInfo:userInfo];
+}
+
+-(void)errorTwo {
+    NSString *domain = @"YourBad";
+    NSInteger code = 403;
+    NSDictionary *userInfo = @{@"Description" : @"Can't Go There.."};
+    
+    NSError *error = [NSError errorWithDomain:domain
+                                         code:code
+                                     userInfo:userInfo];
+}
+
+
+
+-(void)errorThree {
+    NSString *domain = @"AllBad";
+    NSInteger code = 400;
+    NSDictionary *userInfo = @{@"Description" : @"Bad Request"};
+    
+    NSError *error = [NSError errorWithDomain:domain
+                                         code:code
+                                     userInfo:userInfo];
+}
+
+-(void)errorFour {
+    NSString *domain = @"PackedUp";
+    NSInteger code = 301;
+    NSDictionary *userInfo = @{@"Description" : @"Moved Permanently"};
+    
+    NSError *error = [NSError errorWithDomain:domain
+                                         code:code
+                                     userInfo:userInfo];
+}
+
+-(void)errorFive {
+    NSString *domain = @"NoSupport";
+    NSInteger code = 415;
+    NSDictionary *userInfo = @{@"Description" : @"Unsupported Media Type"};
+    
+    NSError *error = [NSError errorWithDomain:domain
+                                         code:code
+                                     userInfo:userInfo];
+}
+
+
+
 
 
 -(instancetype)init{
