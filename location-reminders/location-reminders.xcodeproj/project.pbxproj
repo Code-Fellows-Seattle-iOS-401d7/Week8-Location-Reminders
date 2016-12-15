@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010E52761DFA0C840072725A /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010E52751DFA0C840072725A /* LogInViewController.m */; };
+		013F11B61E0302380024E056 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F11B51E0302380024E056 /* File.swift */; };
 		0199C2521DF5E8A10001A828 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2511DF5E8A10001A828 /* main.m */; };
 		0199C2551DF5E8A10001A828 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2541DF5E8A10001A828 /* AppDelegate.m */; };
 		0199C2581DF5E8A10001A828 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0199C2571DF5E8A10001A828 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		010E52741DFA0C840072725A /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogInViewController.h; path = ../LogInViewController.h; sourceTree = "<group>"; };
 		010E52751DFA0C840072725A /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogInViewController.m; path = ../LogInViewController.m; sourceTree = "<group>"; };
+		013F11B41E0302370024E056 /* location-reminders-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "location-reminders-Bridging-Header.h"; sourceTree = "<group>"; };
+		013F11B51E0302380024E056 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		0199C24D1DF5E8A10001A828 /* location-reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "location-reminders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0199C2511DF5E8A10001A828 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0199C2531DF5E8A10001A828 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,10 +121,12 @@
 				0199C27D1DF74FB70001A828 /* DetailViewController.m */,
 				0199C2791DF740FE0001A828 /* LocationController.h */,
 				0199C27A1DF740FE0001A828 /* LocationController.m */,
+				013F11B51E0302380024E056 /* File.swift */,
 				0199C25C1DF5E8A20001A828 /* Assets.xcassets */,
 				0199C25E1DF5E8A20001A828 /* LaunchScreen.storyboard */,
 				0199C2611DF5E8A20001A828 /* Info.plist */,
 				0199C2501DF5E8A10001A828 /* Supporting Files */,
+				013F11B41E0302370024E056 /* location-reminders-Bridging-Header.h */,
 			);
 			path = "location-reminders";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 					0199C24C1DF5E8A10001A828 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = U5DE7QAC5B;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -230,6 +236,7 @@
 				0199C2811DF885300001A828 /* Reminder.m in Sources */,
 				0199C27B1DF740FE0001A828 /* LocationController.m in Sources */,
 				0199C2581DF5E8A10001A828 /* ViewController.m in Sources */,
+				013F11B61E0302380024E056 /* File.swift in Sources */,
 				0199C2551DF5E8A10001A828 /* AppDelegate.m in Sources */,
 				0199C2521DF5E8A10001A828 /* main.m in Sources */,
 			);
@@ -351,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U5DE7QAC5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -361,6 +369,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.coreymalek.location-reminders";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "location-reminders/location-reminders-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -368,6 +379,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U5DE7QAC5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,6 +390,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.coreymalek.location-reminders";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "location-reminders/location-reminders-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
